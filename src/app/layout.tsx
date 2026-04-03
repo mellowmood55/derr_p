@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Derrick Adang | Portfolio",
   description: "Data Science, CRM, and leadership portfolio for Derrick Adang",
+  icons: {
+    icon: "/brand-icon.svg",
+    shortcut: "/brand-icon.svg",
+    apple: "/brand-icon.svg",
+  },
 };
 
 export default function RootLayout({
