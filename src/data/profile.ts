@@ -15,6 +15,15 @@ export const DERRICK_DATA = {
   },
   experience: [
     {
+      role: "Lead Designer",
+      company: "Divoc Graphics",
+      type: "Full-time",
+      period: "2018 - Present",
+      skills: ["Adobe Suite", "Canva", "Creative Direction", "Brand Consistency", "Team Leadership"],
+      description:
+        "As the Lead Designer at Divoc Graphics, I set creative direction and oversee visual projects from concept to completion. I guide a design team to maintain brand consistency and high-quality output across client deliverables, while collaborating across departments to align design with strategic goals.",
+    },
+    {
       role: "Galooli Generator Remote Monitoring Support",
       company: "Cummins C&G Ltd",
       type: "Full-time",
@@ -124,6 +133,13 @@ export const DERRICK_DATA = {
       period: "Aug 2018 - Jun 2020",
     },
   ],
+  hobbies: [
+    "Creative Design and Branding",
+    "Community Outreach",
+    "Mentoring Young Professionals",
+    "Public Health Awareness Initiatives",
+    "Leadership in Rotary and Rotaract",
+  ],
   skills: {
     technical: [
       "Data Analysis",
@@ -132,6 +148,15 @@ export const DERRICK_DATA = {
       "MS Excel (Certified)",
       "Python",
       "Predictive Maintenance",
+      "MATLAB",
+      "C++",
+      "R",
+      "Java",
+      "SQL",
+      "Machine Learning",
+      "Data Mining",
+      "SPSS",
+      "Statistics",
     ],
     business: [
       "CRM",
@@ -140,7 +165,19 @@ export const DERRICK_DATA = {
       "Business Development",
       "Quality Assurance",
     ],
-    health: ["Public Health", "Clinical Research", "Healthcare Management", "Occupational Health"],
+    health: [
+      "Public Health",
+      "Clinical Research",
+      "Healthcare Management",
+      "Occupational Health",
+      "Research",
+      "Biostatistics",
+      "Community Outreach",
+      "Epidemiology",
+      "Program Evaluation",
+      "Infectious Diseases",
+      "Global Health",
+    ],
   },
 } as const;
 

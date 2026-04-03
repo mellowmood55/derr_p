@@ -1,7 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { DERRICK_DATA } from "@/data/profile";
+import { getHobbiesContent, getVolunteeringContent } from "@/lib/content";
 
-export default function AboutPage() {
+export const dynamic = "force-dynamic";
+
+export default async function AboutPage() {
+  const [hobbies, volunteering] = await Promise.all([getHobbiesContent(), getVolunteeringContent()]);
+
   return (
     <div className="space-y-10">
       <section className="grid gap-6 rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6 lg:grid-cols-[1.4fr_0.6fr] lg:items-center">
@@ -34,18 +40,22 @@ export default function AboutPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Leadership & Volunteering</h2>
-        <div className="grid grid-cols-1 gap-3">
-          {DERRICK_DATA.volunteering.map((item) => (
-            <article
-              key={`${item.role}-${item.org}`}
-              className="rounded-xl border border-yellow-500/20 bg-black/60 p-4"
-            >
-              <p className="font-semibold text-white">{item.role}</p>
-              <p className="text-zinc-300">{item.org}</p>
-              <p className="text-sm text-zinc-400">{item.period}</p>
-            </article>
-          ))}
+        <h2 className="text-2xl font-semibold">More Profile Tabs</h2>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Link
+            href="/volunteering"
+            className="rounded-xl border border-yellow-500/20 bg-black/60 p-4 transition hover:bg-yellow-500/10"
+          >
+            <p className="font-semibold text-white">Volunteering</p>
+            <p className="text-sm text-zinc-300">Open full leadership history ({volunteering.length} entries).</p>
+          </Link>
+          <Link
+            href="/hobbies"
+            className="rounded-xl border border-yellow-500/20 bg-black/60 p-4 transition hover:bg-yellow-500/10"
+          >
+            <p className="font-semibold text-white">Hobbies</p>
+            <p className="text-sm text-zinc-300">Open interests and activities ({hobbies.length} listed).</p>
+          </Link>
         </div>
       </section>
     </div>

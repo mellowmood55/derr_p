@@ -4,8 +4,13 @@ import { ArrowUpRight, GraduationCap, Landmark, Sparkles } from "lucide-react";
 import { ProjectTimeline } from "@/components/ui/ProjectTimeline";
 import { SkillsCloud } from "@/components/ui/SkillsCloud";
 import { DERRICK_DATA, LINKEDIN_URL } from "@/data/profile";
+import { getHobbiesContent, getVolunteeringContent } from "@/lib/content";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [hobbies, volunteering] = await Promise.all([getHobbiesContent(), getVolunteeringContent()]);
+
   return (
     <div className="space-y-16">
       <section
@@ -104,18 +109,34 @@ export default function Home() {
       </section>
 
       <section id="contact" className="space-y-6 rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
-        <h3 className="text-2xl font-semibold">Leadership & Impact</h3>
-        <div className="grid gap-4">
-          {DERRICK_DATA.volunteering.map((item) => (
-            <div
-              key={`${item.role}-${item.org}`}
-              className="rounded-xl border border-yellow-500/20 bg-black/50 p-4"
-            >
-              <p className="font-semibold text-white">{item.role}</p>
-              <p className="text-zinc-300">{item.org}</p>
-              <p className="text-sm text-zinc-400">{item.period}</p>
-            </div>
-          ))}
+        <h3 className="text-2xl font-semibold">Community & Interests</h3>
+        <div className="grid gap-4 md:grid-cols-2">
+          <Link
+            href="/volunteering"
+            className="rounded-xl border border-yellow-400/30 bg-black/60 p-5 transition hover:border-yellow-300 hover:bg-yellow-500/10"
+          >
+            <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Volunteering</p>
+            <p className="mt-2 text-lg font-medium text-white">View Leadership Roles</p>
+          </Link>
+          <Link
+            href="/hobbies"
+            className="rounded-xl border border-yellow-400/30 bg-black/60 p-5 transition hover:border-yellow-300 hover:bg-yellow-500/10"
+          >
+            <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Hobbies</p>
+            <p className="mt-2 text-lg font-medium text-white">{hobbies.length} Interests & Activities</p>
+          </Link>
+        </div>
+        <div className="flex items-center justify-between gap-3 rounded-xl border border-yellow-400/20 bg-black/50 p-4">
+          <p className="text-zinc-300">Need to update public content?</p>
+          <Link
+            href="/editor"
+            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+          >
+            Open Editor
+          </Link>
+        </div>
+        <div className="rounded-xl border border-yellow-500/20 bg-black/50 p-4">
+          <p className="text-sm text-zinc-300">Current leadership entries: {volunteering.length}</p>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
           <a

@@ -7,6 +7,7 @@ type Experience = {
   period: string;
   location?: string;
   skills: readonly string[];
+  description?: string;
 };
 
 type ProjectTimelineProps = {

@@ -9,6 +9,7 @@ type Experience = {
   period: string;
   location?: string;
   skills: readonly string[];
+  description?: string;
 };
 
 type ExperienceCardProps = {
@@ -69,6 +70,7 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         </div>
       </div>
       {experience.location ? <p className="mt-3 text-sm text-zinc-400">{experience.location}</p> : null}
+      {experience.description ? <p className="mt-3 text-sm text-zinc-300">{experience.description}</p> : null}
       <div className="mt-4 flex flex-wrap gap-2">
         {experience.skills.map((skill) => (
           <span

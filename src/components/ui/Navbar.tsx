@@ -9,9 +9,12 @@ const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "Experience", href: "/#experience" },
   { label: "Education", href: "/#education" },
+  { label: "Volunteering", href: "/volunteering" },
+  { label: "Hobbies", href: "/hobbies" },
   { label: "About", href: "/about" },
   { label: "Certifications", href: "/credentials" },
   { label: "Contact", href: "/contact" },
+  { label: "Editor", href: "/editor" },
 ];
 
 const HOME_SECTIONS = ["home", "experience", "education"];
@@ -66,6 +69,18 @@ export function Navbar() {
 
     if (pathname === "/contact") {
       return "/contact";
+    }
+
+    if (pathname === "/volunteering") {
+      return "/volunteering";
+    }
+
+    if (pathname === "/hobbies") {
+      return "/hobbies";
+    }
+
+    if (pathname === "/editor") {
+      return "/editor";
     }
 
     if (pathname === "/about") {
