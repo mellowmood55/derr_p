@@ -57,12 +57,24 @@ CREATE TABLE IF NOT EXISTS contact_profile (
   updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+CREATE TABLE IF NOT EXISTS testimonial_entries (
+  id BIGSERIAL PRIMARY KEY,
+  quote TEXT NOT NULL,
+  referee TEXT NOT NULL,
+  role TEXT NOT NULL,
+  organization TEXT NOT NULL,
+  rating INTEGER NOT NULL DEFAULT 5,
+  display_order INTEGER NOT NULL DEFAULT 0,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
 TRUNCATE TABLE volunteering_entries RESTART IDENTITY;
 TRUNCATE TABLE hobbies_entries RESTART IDENTITY;
 TRUNCATE TABLE experience_entries RESTART IDENTITY;
 TRUNCATE TABLE education_entries RESTART IDENTITY;
 TRUNCATE TABLE certification_entries RESTART IDENTITY;
 TRUNCATE TABLE contact_profile RESTART IDENTITY;
+TRUNCATE TABLE testimonial_entries RESTART IDENTITY;
 
 INSERT INTO volunteering_entries (role, org, period, display_order) VALUES
 ('Charter President', 'Rotary Club of Mega One D9212', 'Jun 2025 - Present', 0),
@@ -97,6 +109,11 @@ INSERT INTO certification_entries (title, date, issuer, certification_id, displa
 
 INSERT INTO contact_profile (id, email, linkedin) VALUES
 (1, 'adangderrick2@gmail.com', 'linkedin.com/in/derrick-adang');
+
+INSERT INTO testimonial_entries (quote, referee, role, organization, rating, display_order) VALUES
+('The election process was smooth, transparent, and easy for our team to run from start to finish.', 'Peter Mwarangu', 'DRR D9212, Rotary Year 2025/26', 'Rotaract Club of Malindi', 5, 0),
+('KweliVote made our elections seamless. Setup took a few minutes and the anonymous voting gave members peace of mind.', 'Derrick Adang', 'President, Rotary Year 2025/26', 'Rotary Club of Mega One', 5, 1),
+('The platform simplified what is usually a manual process into something fast, organized, and credible.', 'Skippers Liyay', 'Charter President', 'Rotary Club Leadership', 5, 2);
 
 INSERT INTO hobbies_entries (hobby, display_order) VALUES
 ('Creative Design and Branding', 0),

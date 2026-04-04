@@ -36,6 +36,14 @@ export type VolunteeringItem = {
   period: string;
 };
 
+export type TestimonialItem = {
+  quote: string;
+  referee: string;
+  role: string;
+  organization: string;
+  rating: number;
+};
+
 export async function getExperienceContent(): Promise<ExperienceItem[]> {
   const sql = getDbClient();
   if (!sql) {
@@ -184,5 +192,31 @@ export async function getHobbiesContent(): Promise<string[]> {
     return rows.map((row) => row.hobby);
   } catch {
     return [...DERRICK_DATA.hobbies];
+  }
+}
+
+export async function getTestimonialsContent(): Promise<TestimonialItem[]> {
+  const sql = getDbClient();
+  if (!sql) {
+    return DERRICK_DATA.testimonials.map((item) => ({ ...item }));
+  }
+
+  try {
+    const rows = (await sql`
+      SELECT quote, referee, role, organization, rating
+      FROM testimonial_entries
+      ORDER BY display_order ASC, id ASC
+    `) as Array<TestimonialItem>;
+
+    if (!rows.length) {
+      return DERRICK_DATA.testimonials.map((item) => ({ ...item }));
+    }
+
+    return rows.map((row) => ({
+      ...row,
+      rating: typeof row.rating === "number" ? row.rating : 5,
+    }));
+  } catch {
+    return DERRICK_DATA.testimonials.map((item) => ({ ...item }));
   }
 }

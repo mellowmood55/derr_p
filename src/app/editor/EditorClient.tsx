@@ -115,13 +115,13 @@ export default function EditorClient() {
 
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
+      <section className="surface-panel rounded-2xl p-6">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl font-bold text-white">Content Editor</h1>
           <button
             type="button"
             onClick={handleLogout}
-            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+            className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15"
           >
             Logout
           </button>
@@ -135,42 +135,42 @@ export default function EditorClient() {
       </section>
 
       {isLoading ? (
-        <section className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-4 text-sm text-zinc-300">
+        <section className="surface-panel rounded-2xl p-4 text-sm text-zinc-300">
           Loading content from database...
         </section>
       ) : null}
 
-      <section className="space-y-4 rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
+      <section className="surface-panel space-y-4 rounded-2xl p-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-semibold text-white">Volunteering</h2>
           <button
             type="button"
             onClick={addVolunteering}
-            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+            className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15"
           >
             Add Row
           </button>
         </div>
         <div className="space-y-4">
           {volunteering.map((item, index) => (
-            <div key={`vol-${index}`} className="grid gap-3 rounded-xl border border-yellow-500/20 bg-black/50 p-4 md:grid-cols-4">
+            <div key={`vol-${index}`} className="surface-card grid gap-3 rounded-xl p-4 md:grid-cols-4">
               <input
                 value={item.role}
                 onChange={(event) => updateVolunteering(index, "role", event.target.value)}
                 placeholder="Role"
-                className="rounded-lg border border-yellow-500/20 bg-zinc-900 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-yellow-400/40"
+                className="rounded-lg border border-slate-300/20 bg-slate-950/80 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-sky-300/40"
               />
               <input
                 value={item.org}
                 onChange={(event) => updateVolunteering(index, "org", event.target.value)}
                 placeholder="Organization"
-                className="rounded-lg border border-yellow-500/20 bg-zinc-900 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-yellow-400/40"
+                className="rounded-lg border border-slate-300/20 bg-slate-950/80 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-sky-300/40"
               />
               <input
                 value={item.period}
                 onChange={(event) => updateVolunteering(index, "period", event.target.value)}
                 placeholder="Period"
-                className="rounded-lg border border-yellow-500/20 bg-zinc-900 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-yellow-400/40"
+                className="rounded-lg border border-slate-300/20 bg-slate-950/80 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-sky-300/40"
               />
               <button
                 type="button"
@@ -184,25 +184,25 @@ export default function EditorClient() {
         </div>
       </section>
 
-      <section className="space-y-4 rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
+      <section className="surface-panel space-y-4 rounded-2xl p-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-semibold text-white">Hobbies</h2>
           <button
             type="button"
             onClick={addHobby}
-            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+            className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15"
           >
             Add Hobby
           </button>
         </div>
         <div className="space-y-3">
           {hobbies.map((item, index) => (
-            <div key={`hobby-${index}`} className="grid gap-3 rounded-xl border border-yellow-500/20 bg-black/50 p-4 md:grid-cols-[1fr_auto]">
+            <div key={`hobby-${index}`} className="surface-card grid gap-3 rounded-xl p-4 md:grid-cols-[1fr_auto]">
               <input
                 value={item}
                 onChange={(event) => updateHobby(index, event.target.value)}
                 placeholder="Hobby"
-                className="rounded-lg border border-yellow-500/20 bg-zinc-900 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-yellow-400/40"
+                className="rounded-lg border border-slate-300/20 bg-slate-950/80 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-sky-300/40"
               />
               <button
                 type="button"
@@ -220,14 +220,14 @@ export default function EditorClient() {
         <button
           type="button"
           onClick={saveChanges}
-          className="rounded-xl bg-yellow-400 px-4 py-2 font-medium text-black transition hover:bg-yellow-300"
+          className="rounded-xl bg-sky-300 px-4 py-2 font-medium text-slate-950 transition hover:bg-sky-200"
         >
           Save Changes
         </button>
         <button
           type="button"
           onClick={resetDefaults}
-          className="rounded-xl border border-yellow-500/40 bg-black px-4 py-2 font-medium text-yellow-200 transition hover:bg-yellow-500/10"
+          className="rounded-xl border border-sky-300/40 bg-sky-300/5 px-4 py-2 font-medium text-sky-100 transition hover:bg-sky-300/15"
         >
           Reset to Default
         </button>

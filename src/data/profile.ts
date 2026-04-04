@@ -140,6 +140,32 @@ export const DERRICK_DATA = {
     "Public Health Awareness Initiatives",
     "Leadership in Rotary and Rotaract",
   ],
+  testimonials: [
+    {
+      quote:
+        "The election process was smooth, transparent, and easy for our team to run from start to finish.",
+      referee: "Peter Mwarangu",
+      role: "DRR D9212, Rotary Year 2025/26",
+      organization: "Rotaract Club of Malindi",
+      rating: 5,
+    },
+    {
+      quote:
+        "KweliVote made our elections seamless. Setup took a few minutes and the anonymous voting gave members peace of mind.",
+      referee: "Derrick Adang",
+      role: "President, Rotary Year 2025/26",
+      organization: "Rotary Club of Mega One",
+      rating: 5,
+    },
+    {
+      quote:
+        "The platform simplified what is usually a manual process into something fast, organized, and credible.",
+      referee: "Skippers Liyay",
+      role: "Charter President",
+      organization: "Rotary Club Leadership",
+      rating: 5,
+    },
+  ],
   skills: {
     technical: [
       "Data Analysis",

@@ -40,10 +40,10 @@ export default async function EditCertificationsPage() {
   return (
     <div className="space-y-6">
       <div className="flex justify-between gap-3">
-        <Link href="/private" className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10">
+        <Link href="/private" className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15">
           Back to Portal
         </Link>
-        <Link href="/credentials" className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10">
+        <Link href="/credentials" className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15">
           View Public Site
         </Link>
       </div>
@@ -59,7 +59,7 @@ export default async function EditCertificationsPage() {
           itemLabel="Certification"
         />
       ) : (
-        <div className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6 text-zinc-300">
+        <div className="surface-panel rounded-2xl p-6 text-zinc-300">
           Admin login is required to edit this section.
         </div>
       )}

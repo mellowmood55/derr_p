@@ -94,18 +94,18 @@ export function SectionListEditorClient({
 
   return (
     <div className="space-y-8">
-      <section className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
+      <section className="surface-panel rounded-2xl p-6">
         <h1 className="text-3xl font-bold text-white">{title}</h1>
         <p className="mt-3 text-zinc-300">{description}</p>
       </section>
 
-      <section className="space-y-4 rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-6">
+      <section className="surface-panel space-y-4 rounded-2xl p-6">
         <div className="flex items-center justify-between gap-4">
           <h2 className="text-2xl font-semibold text-white">{itemLabel}</h2>
           <button
             type="button"
             onClick={addRow}
-            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+            className="rounded-lg border border-sky-300/40 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15"
           >
             {addLabel}
           </button>
@@ -113,7 +113,7 @@ export function SectionListEditorClient({
 
         <div className="space-y-4">
           {rows.map((row, rowIndex) => (
-            <div key={`${itemLabel}-${rowIndex}`} className="space-y-3 rounded-xl border border-yellow-500/20 bg-black/50 p-4">
+            <div key={`${itemLabel}-${rowIndex}`} className="surface-card space-y-3 rounded-xl p-4">
               <div className="grid gap-3 md:grid-cols-2">
                 {fields.map((field) => (
                   <label key={field.key} className="space-y-2 text-sm text-zinc-300">
@@ -122,7 +122,7 @@ export function SectionListEditorClient({
                       value={row[field.key] ?? ""}
                       onChange={(event) => updateRow(rowIndex, field.key, event.target.value)}
                       placeholder={field.placeholder ?? field.label}
-                      className="w-full rounded-lg border border-yellow-500/20 bg-zinc-900 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-yellow-400/40"
+                      className="w-full rounded-lg border border-slate-300/20 bg-slate-950/80 px-3 py-2 text-zinc-100 outline-none focus:ring-2 focus:ring-sky-300/40"
                     />
                   </label>
                 ))}
@@ -146,14 +146,14 @@ export function SectionListEditorClient({
           type="button"
           onClick={saveChanges}
           disabled={isSaving}
-          className="rounded-xl bg-yellow-400 px-4 py-2 font-medium text-black transition hover:bg-yellow-300 disabled:cursor-not-allowed disabled:opacity-60"
+          className="rounded-xl bg-sky-300 px-4 py-2 font-medium text-slate-950 transition hover:bg-sky-200 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isSaving ? "Saving..." : saveLabel}
         </button>
         <button
           type="button"
           onClick={resetDefaults}
-          className="rounded-xl border border-yellow-500/40 bg-black px-4 py-2 font-medium text-yellow-200 transition hover:bg-yellow-500/10"
+          className="rounded-xl border border-sky-300/45 bg-sky-300/5 px-4 py-2 font-medium text-sky-100 transition hover:bg-sky-300/15"
         >
           Reset to Default
         </button>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowUpRight, GraduationCap, Landmark, Sparkles } from "lucide-react";
 import { ProjectTimeline } from "@/components/ui/ProjectTimeline";
 import { SkillsCloud } from "@/components/ui/SkillsCloud";
+import { TestimonialsCarousel } from "@/components/ui/TestimonialsCarousel";
 import { DERRICK_DATA, LINKEDIN_URL } from "@/data/profile";
 import { getAdminCookieValue, isAdminAuthed } from "@/lib/admin-auth";
 import {
@@ -10,6 +11,7 @@ import {
   getEducationContent,
   getExperienceContent,
   getHobbiesContent,
+  getTestimonialsContent,
   getVolunteeringContent,
 } from "@/lib/content";
 
@@ -22,6 +24,7 @@ export default async function Home() {
     experience,
     education,
     contact,
+    testimonials,
     adminToken,
   ] = await Promise.all([
     getHobbiesContent(),
@@ -29,6 +32,7 @@ export default async function Home() {
     getExperienceContent(),
     getEducationContent(),
     getContactContent(),
+    getTestimonialsContent(),
     getAdminCookieValue(),
   ]);
   const isAdmin = isAdminAuthed(adminToken);
@@ -148,6 +152,21 @@ export default async function Home() {
       <section id="skills" className="space-y-6">
         <h3 className="text-2xl font-semibold">Skills</h3>
         <SkillsCloud skills={DERRICK_DATA.skills} />
+      </section>
+
+      <section id="testimonials" className="surface-panel space-y-4 rounded-2xl p-6">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm text-zinc-300">Trusted referee comments on leadership and election support work.</p>
+          {isAdmin ? (
+            <Link
+              href="/private/edit/testimonials"
+              className="rounded-lg border border-sky-300/45 bg-sky-300/5 px-3 py-2 text-sm text-sky-100 transition hover:bg-sky-300/15"
+            >
+              Edit Testimonials
+            </Link>
+          ) : null}
+        </div>
+        <TestimonialsCarousel testimonials={testimonials} />
       </section>
 
       <section id="contact" className="surface-panel space-y-6 rounded-2xl p-6">
