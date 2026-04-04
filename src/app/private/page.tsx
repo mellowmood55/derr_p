@@ -41,18 +41,32 @@ export default async function PrivateEntryPage() {
               <p className="mt-1 text-sm text-zinc-300">Edit volunteering and hobbies together.</p>
             </Link>
             <Link
-              href="/volunteering"
+              href="/private/edit/experience"
               className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
             >
-              <p className="font-semibold text-white">Edit Volunteering</p>
-              <p className="mt-1 text-sm text-zinc-300">Update leadership entries.</p>
+              <p className="font-semibold text-white">Edit Experience</p>
+              <p className="mt-1 text-sm text-zinc-300">Update job history entries.</p>
             </Link>
             <Link
-              href="/hobbies"
+              href="/private/edit/education"
               className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
             >
-              <p className="font-semibold text-white">Edit Hobbies</p>
-              <p className="mt-1 text-sm text-zinc-300">Update interests and activities.</p>
+              <p className="font-semibold text-white">Edit Education</p>
+              <p className="mt-1 text-sm text-zinc-300">Update academic background.</p>
+            </Link>
+            <Link
+              href="/private/edit/certifications"
+              className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
+            >
+              <p className="font-semibold text-white">Edit Certifications</p>
+              <p className="mt-1 text-sm text-zinc-300">Update credentials and badges.</p>
+            </Link>
+            <Link
+              href="/private/edit/contact"
+              className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
+            >
+              <p className="font-semibold text-white">Edit Contact</p>
+              <p className="mt-1 text-sm text-zinc-300">Update email and LinkedIn.</p>
             </Link>
           </div>
         </div>

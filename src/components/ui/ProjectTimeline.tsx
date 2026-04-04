@@ -17,10 +17,11 @@ type ProjectTimelineProps = {
 export function ProjectTimeline({ experience }: ProjectTimelineProps) {
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-      {experience.map((item) => (
+      {experience.map((item, index) => (
         <ExperienceCard
           key={`${item.role}-${item.company}-${item.period}`}
           experience={item}
+          index={index}
         />
       ))}
     </div>

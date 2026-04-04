@@ -1,12 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { DERRICK_DATA } from "@/data/profile";
+import { getAdminCookieValue, isAdminAuthed } from "@/lib/admin-auth";
 import { getHobbiesContent, getVolunteeringContent } from "@/lib/content";
+import { getEducationContent } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export default async function AboutPage() {
-  const [hobbies, volunteering] = await Promise.all([getHobbiesContent(), getVolunteeringContent()]);
+  const [hobbies, volunteering, education, adminToken] = await Promise.all([
+    getHobbiesContent(),
+    getVolunteeringContent(),
+    getEducationContent(),
+    getAdminCookieValue(),
+  ]);
+  const isAdmin = isAdminAuthed(adminToken);
 
   return (
     <div className="space-y-10">
@@ -24,9 +32,19 @@ export default async function AboutPage() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="text-2xl font-semibold">Education</h2>
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-2xl font-semibold">Education</h2>
+          {isAdmin ? (
+            <Link
+              href="/private/edit/education"
+              className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
+            >
+              Edit Education
+            </Link>
+          ) : null}
+        </div>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {DERRICK_DATA.education.map((item) => (
+          {education.map((item) => (
             <article key={item.school} className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-5">
               <p className="font-semibold text-white">{item.school}</p>
               <p className="text-zinc-300">{item.degree}</p>

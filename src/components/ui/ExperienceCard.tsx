@@ -14,6 +14,7 @@ type Experience = {
 
 type ExperienceCardProps = {
   experience: Experience;
+  index?: number;
 };
 
 function getRoleStatus(period: string) {
@@ -47,22 +48,23 @@ function getRoleStatus(period: string) {
   return endDate >= new Date(now.getFullYear(), now.getMonth(), 1) ? "Recent Role" : "Past Role";
 }
 
-export function ExperienceCard({ experience }: ExperienceCardProps) {
+export function ExperienceCard({ experience, index = 0 }: ExperienceCardProps) {
   const status = getRoleStatus(experience.period);
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 28, scale: 0.985 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      whileHover={{ y: -6 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
-      className="rounded-2xl border border-yellow-500/30 bg-zinc-900/80 p-5"
+      transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.06 }}
+      className="surface-card rounded-2xl p-5"
     >
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h4 className="text-lg font-semibold text-white">{experience.role}</h4>
           <p className="text-zinc-300">{experience.company}</p>
-          <p className="mt-1 text-xs uppercase tracking-wide text-yellow-300">{status}</p>
+          <p className="mt-1 text-xs uppercase tracking-wide text-sky-200">{status}</p>
         </div>
         <div className="text-right text-sm text-zinc-400">
           <p>{experience.period}</p>
@@ -75,7 +77,7 @@ export function ExperienceCard({ experience }: ExperienceCardProps) {
         {experience.skills.map((skill) => (
           <span
             key={`${experience.role}-${skill}`}
-            className="rounded-full border border-yellow-400/35 bg-yellow-500/10 px-3 py-1 text-xs text-yellow-100"
+            className="rounded-full border border-sky-300/30 bg-sky-300/10 px-3 py-1 text-xs text-sky-100"
           >
             {skill}
           </span>
