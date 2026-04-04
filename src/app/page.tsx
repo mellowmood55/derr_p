@@ -37,10 +37,10 @@ export default async function Home() {
     <div className="space-y-16">
       <section
         id="home"
-        className="shine-band surface-panel relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10"
+        className="surface-panel relative overflow-hidden rounded-3xl px-6 py-14 sm:px-10"
       >
-        <div className="animate-drift absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-400/25 blur-3xl" />
-        <div className="animate-drift absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-amber-300/20 blur-3xl [animation-delay:1.2s]" />
+        <div className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-sky-400/25 blur-3xl" />
+        <div className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-amber-300/20 blur-3xl" />
         <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-[1.5fr_1fr] lg:items-center">
           <div className="flex flex-col gap-6">
             <p className="accent-pill inline-flex w-fit items-center gap-2 rounded-full px-4 py-1 text-sm">
