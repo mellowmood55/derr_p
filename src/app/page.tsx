@@ -126,15 +126,6 @@ export default async function Home() {
             <p className="mt-2 text-lg font-medium text-white">{hobbies.length} Interests & Activities</p>
           </Link>
         </div>
-        <div className="flex items-center justify-between gap-3 rounded-xl border border-yellow-400/20 bg-black/50 p-4">
-          <p className="text-zinc-300">Need to update public content?</p>
-          <Link
-            href="/editor"
-            className="rounded-lg border border-yellow-400/40 bg-black px-3 py-2 text-sm text-yellow-200 transition hover:bg-yellow-500/10"
-          >
-            Open Editor
-          </Link>
-        </div>
         <div className="rounded-xl border border-yellow-500/20 bg-black/50 p-4">
           <p className="text-sm text-zinc-300">Current leadership entries: {volunteering.length}</p>
         </div>

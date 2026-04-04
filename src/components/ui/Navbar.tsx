@@ -14,7 +14,6 @@ const NAV_LINKS = [
   { label: "About", href: "/about" },
   { label: "Certifications", href: "/credentials" },
   { label: "Contact", href: "/contact" },
-  { label: "Editor", href: "/editor" },
 ];
 
 const HOME_SECTIONS = ["home", "experience", "education"];
@@ -77,10 +76,6 @@ export function Navbar() {
 
     if (pathname === "/hobbies") {
       return "/hobbies";
-    }
-
-    if (pathname === "/editor") {
-      return "/editor";
     }
 
     if (pathname === "/about") {

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { requireAdminFromRequest } from "@/lib/admin-auth";
 import { getDbClient } from "@/lib/db";
 import { getVolunteeringContent, type VolunteeringItem } from "@/lib/content";
 
@@ -8,6 +9,10 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  if (!requireAdminFromRequest(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const sql = getDbClient();
   if (!sql) {
     return NextResponse.json(
