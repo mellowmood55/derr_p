@@ -25,22 +25,51 @@ export default async function PrivateEntryPage() {
         </p>
       </div>
 
-      <div className="grid gap-4 rounded-2xl border border-yellow-500/25 bg-black/60 p-6 md:grid-cols-[1fr_auto] md:items-center">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Portal Action</p>
-          <p className="mt-2 text-zinc-300">
-            {authed
-              ? "You are already authenticated. Open the editor dashboard."
-              : "Login is required to access and edit website content."}
-          </p>
+      {authed ? (
+        <div className="space-y-4 rounded-2xl border border-yellow-500/25 bg-black/60 p-6">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Admin Shortcuts</p>
+            <p className="mt-2 text-zinc-300">Open the individual edit pages or the main editor dashboard.</p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            <Link
+              href="/editor"
+              className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
+            >
+              <p className="font-semibold text-white">Main Editor</p>
+              <p className="mt-1 text-sm text-zinc-300">Edit volunteering and hobbies together.</p>
+            </Link>
+            <Link
+              href="/volunteering"
+              className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
+            >
+              <p className="font-semibold text-white">Edit Volunteering</p>
+              <p className="mt-1 text-sm text-zinc-300">Update leadership entries.</p>
+            </Link>
+            <Link
+              href="/hobbies"
+              className="rounded-xl border border-yellow-400/30 bg-zinc-950 p-4 transition hover:bg-yellow-500/10"
+            >
+              <p className="font-semibold text-white">Edit Hobbies</p>
+              <p className="mt-1 text-sm text-zinc-300">Update interests and activities.</p>
+            </Link>
+          </div>
         </div>
-        <Link
-          href={authed ? "/editor" : "/admin/login"}
-          className="inline-flex items-center justify-center rounded-xl bg-yellow-400 px-5 py-3 font-semibold text-black transition hover:bg-yellow-300"
-        >
-          {authed ? "Open Editor" : "Admin Login"}
-        </Link>
-      </div>
+      ) : (
+        <div className="grid gap-4 rounded-2xl border border-yellow-500/25 bg-black/60 p-6 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-yellow-300">Portal Action</p>
+            <p className="mt-2 text-zinc-300">Login is required to access and edit website content.</p>
+          </div>
+          <Link
+            href="/admin/login"
+            className="inline-flex items-center justify-center rounded-xl bg-yellow-400 px-5 py-3 font-semibold text-black transition hover:bg-yellow-300"
+          >
+            Admin Login
+          </Link>
+        </div>
+      )}
     </div>
   );
 }
