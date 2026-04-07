@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { label: "Home", href: "/#home" },
   { label: "Experience", href: "/#experience" },
   { label: "Education", href: "/#education" },
-  { label: "Testimonials", href: "/#testimonials" },
+  { label: "Testimonials", href: "/testimonials" },
   { label: "Volunteering", href: "/volunteering" },
   { label: "Hobbies", href: "/hobbies" },
   { label: "About", href: "/about" },
@@ -17,7 +17,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "/contact" },
 ];
 
-const HOME_SECTIONS = ["home", "experience", "education", "testimonials"];
+const HOME_SECTIONS = ["home", "experience", "education"];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,6 +81,10 @@ export function Navbar() {
 
     if (pathname === "/about") {
       return "/about";
+    }
+
+    if (pathname === "/testimonials") {
+      return "/testimonials";
     }
 
     return `/#${activeSection}`;

@@ -44,6 +44,18 @@ export type TestimonialItem = {
   rating: number;
 };
 
+export type TestimonialInvite = {
+  id: number;
+  referee: string;
+  role: string;
+  organization: string;
+  email?: string | null;
+  token: string;
+  status: string;
+  created_at?: string;
+  used_at?: string | null;
+};
+
 export async function getExperienceContent(): Promise<ExperienceItem[]> {
   const sql = getDbClient();
   if (!sql) {
@@ -218,5 +230,44 @@ export async function getTestimonialsContent(): Promise<TestimonialItem[]> {
     }));
   } catch {
     return DERRICK_DATA.testimonials.map((item) => ({ ...item }));
+  }
+}
+
+export async function getTestimonialInvites(): Promise<TestimonialInvite[]> {
+  const sql = getDbClient();
+  if (!sql) {
+    return [];
+  }
+
+  try {
+    const rows = (await sql`
+      SELECT id, referee, role, organization, email, token, status, created_at, used_at
+      FROM testimonial_invites
+      ORDER BY id DESC
+    `) as Array<TestimonialInvite>;
+
+    return rows;
+  } catch {
+    return [];
+  }
+}
+
+export async function getTestimonialInviteByToken(token: string): Promise<TestimonialInvite | null> {
+  const sql = getDbClient();
+  if (!sql) {
+    return null;
+  }
+
+  try {
+    const rows = (await sql`
+      SELECT id, referee, role, organization, email, token, status, created_at, used_at
+      FROM testimonial_invites
+      WHERE token = ${token}
+      LIMIT 1
+    `) as Array<TestimonialInvite>;
+
+    return rows[0] ?? null;
+  } catch {
+    return null;
   }
 }
